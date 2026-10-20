@@ -1,0 +1,5 @@
+# Runtime dependencies for the DSH Douyin plugin.
+# Python 3.10+ (tested on 3.14). No browser download is needed: the bridge
+# drives the system-installed Microsoft Edge through Playwright.
+dy-cli==0.2.2
+playwright>=1.40

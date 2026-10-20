@@ -1,0 +1,37 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: JavaScript syntax
+        shell: pwsh
+        run: |
+          node --check index.js
+          node --check lib/backend.js
+          node --check lib/normalize.js
+          node --check lib/tools.js
+
+      - name: Python syntax
+        shell: pwsh
+        run: |
+          python -m py_compile python/douyin_bridge.py python/dy_query.py
+
+      - name: JSON and YAML parse
+        shell: pwsh
+        run: |
+          python -m pip install --disable-pip-version-check pyyaml
+          python -c "import glob,json; [json.load(open(f, encoding='utf-8')) for f in glob.glob('**/*.json', recursive=True)]"
+          python -c "import glob,yaml; [yaml.safe_load(open(f, encoding='utf-8')) for f in glob.glob('**/*.yml', recursive=True)]"

@@ -1,0 +1,57 @@
+{
+  "name": "dsh-douyin-toolkit",
+  "version": "1.0.0",
+  "description": "Douyin tools for DeepSeek Harness: paced reads through dy-cli with an Edge XHR fallback, a pollable QR/SMS login state machine, an account fingerprint, and one guarded comment tool.",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "lib/*.js",
+    "python/*.py",
+    "python/requirements.txt",
+    "locale/*.json",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "scripts/selfcheck.ps1",
+    "examples/*.yml"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "douyin",
+    "dy-cli",
+    "playwright",
+    "edge"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SakuraMat0u/dsh-douyin-toolkit.git"
+  },
+  "homepage": "https://github.com/SakuraMat0u/dsh-douyin-toolkit",
+  "bugs": {
+    "url": "https://github.com/SakuraMat0u/dsh-douyin-toolkit/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "selfcheck": "powershell -ExecutionPolicy Bypass -File scripts/selfcheck.ps1"
+  }
+}
